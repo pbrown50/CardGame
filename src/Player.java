@@ -3,19 +3,21 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private ArrayList<Card> cards;
-    private Card[] hand;
+    private ArrayList<Card> hand;
     private int points;
 
-    Public player(String name) {
+    public Player(String name) {
         this.name = name;
         points = 0;
+        cards = new ArrayList<Card>();
+        hand = new ArrayList<Card>();
     }
 
-    Public player(String name, Card[] hand) {
+    public Player(String name, ArrayList<Card> hand) {
         this.name = name;
-        for (int i = 0; i < hand.length; i++) {
-            this.hand[i] = hand[i];
-        }
+        this.hand = hand;
+        cards = new ArrayList<Card>();
+        points = 0;
     }
 
     public String getName() {
@@ -26,7 +28,7 @@ public class Player {
         return cards;
     }
 
-    public Card[] getHand() { return hand; }
+    public ArrayList<Card> getHand() { return hand; }
 
     public int getPoints() { return points; }
 
@@ -34,7 +36,7 @@ public class Player {
         this.points += points;
     }
 
-    public void addCard(Card card) { hand[hand.length] = card; }
+    public void addCard(Card card) { hand.add(card); }
 
     public String toString() {
         return name + " has " + points + " points\n" + name + "'s cards: " + hand;

@@ -4,9 +4,10 @@ public class Deck {
     private ArrayList<Card> cards;
     private int cardsLeft;
 
-    Public Deck(String[] ranks, String[] suits, int[] values)
+    public Deck(String[] ranks, String[] suits, int[] values)
     {
-        for (int = 0; i < suits.length; i++) {
+        cards = new ArrayList<Card>();
+        for (int i = 0; i < suits.length; i++) {
             for (int j = 0; j < ranks.length; j++) {
                 cards.add(new Card(ranks[j], suits[i], values[j]));
             }
@@ -30,12 +31,13 @@ public class Deck {
         if (cardsLeft == 0) {
             return null;
         }
-        return cards.remove(cardsLeft - 1);
+        cardsLeft--;
+        return cards.remove(cardsLeft);
     }
 
     public void shuffle() {
         for (int i = cards.size(); i > 0; i--) {
-            int r = (int) math.random() * i;
+            int r = (int) Math.random() * i;
             Card placeholder = cards.get(i);
             cards.set(i, cards.get(r));
             cards.set(r, placeholder);
